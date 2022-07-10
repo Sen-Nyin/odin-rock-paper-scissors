@@ -1,4 +1,3 @@
-// Get the variables out of the way
 const ALL_OPTIONS = ["Rock", "Paper", "Scissors"];
 const MAX_GAMES = 5;
 let playerWins = 0;
@@ -15,18 +14,25 @@ const playerSelection = function () {
 
 // Compare selections return winner string
 const playRound = function (computer, player) {
+  // invalid user entry
   if (player !== "rock" && player !== "scissors" && player !== "paper") {
     return `Player has made an invalid selection: ${player}`;
-  } else if (computer === player) {
+  }
+  // TIE
+  else if (computer === player) {
     return `It's a TIE, both picked ${computer}`;
-  } else if (
+  }
+  // Computer wins
+  else if (
     (computer === "rock" && player === "scissors") ||
     (computer === "paper" && player === "rock") ||
     (computer === "scissors" && player === "paper")
   ) {
     computerWins++;
     return `Computer wins! ${computer} beats ${player}`;
-  } else {
+  }
+  // Player wins
+  else {
     playerWins++;
     return `Player wins! ${player} beats ${computer}`;
   }
@@ -35,7 +41,7 @@ const playRound = function (computer, player) {
 // console.log(playRound(computerPlay(), playerSelection()));
 
 // play maxGames rounds and output winner
-const GAME = function () {
+const game = function () {
   for (let i = 1; i <= MAX_GAMES; i++) {
     console.log(playRound(computerPlay(), playerSelection()));
   }
@@ -44,4 +50,4 @@ const GAME = function () {
   } to ${computerWins > playerWins ? playerWins : computerWins}`;
 };
 
-console.log(GAME());
+console.log(game());
