@@ -1,5 +1,20 @@
-# odin-rock-paper-scissors
+# Rock, Paper, Scissors Game
 
-As a total JS newbie, I thought this would be more difficult than it was. I probably could have made the code a bit simpler but I wanted to use as many of the features I've learened over the past 4 days to help embed them.
+A challenge from The Odin Project
 
-The game works as intended, which I'm pleased about, but I'll look forward to the time when I can give this thing an interface so it doesn't have to be played in the browser only.
+##Introduction
+
+This is the first challenge from The Odin Project's Foundations Javascript section.
+
+The task was to be completed in 2 stages:
+
+- Create a console based game only.
+- Add a user interface to the game and utilise event listerners to take user input.
+
+As a complete JavaScript newbie at the time, I thought this would have been more difficult than it was - a testiment to the quality of materials provided by TOP. As the first challenge, I took the opportunity to use as many of the concepts I'd learned as possible to help with embedding that knowledge.
+
+##Technologies Used
+
+- HTML5
+- CSS3 using Sass
+- JavaScript
