@@ -3,6 +3,7 @@ const MAX_GAMES = 5;
 let playerWins = 0;
 let computerWins = 0;
 let playerSelection;
+let roundWinner;
 let gameRound = 0;
 
 const playerScore = document.querySelector(".player-score");
@@ -25,79 +26,54 @@ const computerPlay = function () {
 };
 
 function reset() {
-  modal.classList.toggle("hidden");
-  overlay.classList.toggle("hidden");
-  playerScore.textContent = 0;
-  computerScore.textContent = 0;
+  toggleModal();
+  setPlayerScore(0);
+  setComputerScore(0);
   roundNumber.textContent = "Make your selection to start the game!";
-  roundResult.textContent = "Awaiting Game Start";
-  playerBox.classList.remove("winner");
-  playerBox.classList.remove("tie");
-  computerBox.classList.remove("winner");
-  computerBox.classList.remove("tie");
+  setRoundResult("Awaiting Game Start");
+  setBackgroundColors(reset);
   playerWins = 0;
   computerWins = 0;
   gameRound = 0;
 }
 
-buttons.forEach((button) =>
-  button.addEventListener("click", function (e) {
-    playerSelection = this.textContent;
-    console.log(playerSelection);
-    // console.log(playRound(computerPlay(), playerSelection));
-    game(playerSelection);
-  })
-);
+// EDIT DOM FUNCTIONS
+/////////////////////////
 
-modalButton.addEventListener("click", () => {
-  reset();
-});
-
-overlay.addEventListener("click", () => {
-  reset();
-});
-
-const playRound = function (computer, player) {
-  gameRound++;
-  roundNumber.textContent = `Round Number ${gameRound}`;
-  // invalid user entry
-  if (player !== "Rock" && player !== "Scissors" && player !== "Paper") {
-    return `Player has made an invalid selection: ${player}`;
-  }
-  // TIE
-  else if (computer === player) {
-    playerBox.classList.add("tie");
-    computerBox.classList.add("tie");
-    roundResult.textContent = `It's a TIE, both picked ${computer}`;
-    return `It's a TIE, both picked ${computer}`;
-  }
-  // Computer wins
-  else if (
-    (computer === "Rock" && player === "Scissors") ||
-    (computer === "Paper" && player === "Rock") ||
-    (computer === "Scissors" && player === "Paper")
-  ) {
-    computerWins++;
+function setBackgroundColors(winner) {
+  if (winner === "Computer") {
     playerBox.classList.remove("winner");
     computerBox.classList.add("winner");
     playerBox.classList.remove("tie");
     computerBox.classList.remove("tie");
-    computerScore.textContent = computerWins;
-    roundResult.textContent = `Computer wins! ${computer} beats ${player}`;
-
-    return `Computer wins! ${computer} beats ${player}`;
-  }
-  // Player wins
-  else {
-    playerWins++;
+  } else if (winner === "Player") {
     playerBox.classList.add("winner");
     computerBox.classList.remove("winner");
     computerBox.classList.remove("tie");
     playerBox.classList.remove("tie");
-    playerScore.textContent = playerWins;
-    roundResult.textContent = `Player wins! ${player} beats ${computer}`;
-    return `Player wins! ${player} beats ${computer}`;
+  } else if (winner === "Tie") {
+    playerBox.classList.add("tie");
+    computerBox.classList.add("tie");
+    computerBox.classList.remove("winner");
+    playerBox.classList.remove("winner");
+  } else {
+    playerBox.classList.remove("tie");
+    computerBox.classList.remove("tie");
+    computerBox.classList.remove("winner");
+    playerBox.classList.remove("winner");
   }
+}
+
+const setPlayerScore = (score) => {
+  playerScore.textContent = score;
+};
+
+const setComputerScore = (score) => {
+  computerScore.textContent = score;
+};
+
+const setRoundResult = (result) => {
+  roundResult.textContent = result;
 };
 
 const setModalText = () => {
@@ -111,27 +87,82 @@ const setModalText = () => {
   }
 };
 
-// console.log(playRound(computerPlay(), playerSelection()));
+const toggleModal = () => {
+  modal.classList.toggle("hidden");
+  overlay.classList.toggle("hidden");
+};
 
-// play maxGames rounds and output winner
-// const game = function () {
-//   for (let i = 1; i <= MAX_GAMES; i++) {
-//     console.log(playRound(computerPlay(), playerSelection()));
-//   }
-//   return `${computerWins > playerWins ? "Computer" : "Player"} wins ${
-//     computerWins > playerWins ? computerWins : playerWins
-//   } to ${computerWins > playerWins ? playerWins : computerWins}`;
-// }
+// EVENT LISTENERS
+////////////////////////
 
-// console.log(game());
+// Add an event listener to each button in the nodelist 'buttons'
+buttons.forEach((button) =>
+  button.addEventListener("click", function (e) {
+    playerSelection = this.textContent;
+    game(playerSelection);
+  })
+);
+
+modalButton.addEventListener("click", () => {
+  reset();
+});
+
+overlay.addEventListener("click", () => {
+  reset();
+});
+
+// PLAY ROUNDS - EXECUTED ON CLICK
+// SEE LINES 62 - 68
+//////////////////////////////////
+
+const playRound = function (computer, player) {
+  gameRound++;
+  roundNumber.textContent = `Round Number ${gameRound}`;
+  // invalid user entry
+  if (player !== "Rock" && player !== "Scissors" && player !== "Paper") {
+    return `Player has made an invalid selection: ${player}`;
+  }
+  // TIE
+  else if (computer === player) {
+    roundWinner = "Tie";
+    setBackgroundColors(roundWinner);
+    setRoundResult(`It's a TIE, both picked ${computer}`);
+    return `It's a TIE, both picked ${computer}`;
+  }
+  // Computer wins
+  else if (
+    (computer === "Rock" && player === "Scissors") ||
+    (computer === "Paper" && player === "Rock") ||
+    (computer === "Scissors" && player === "Paper")
+  ) {
+    computerWins++;
+    roundWinner = "Computer";
+    setBackgroundColors(roundWinner);
+    setComputerScore(computerWins);
+    setRoundResult(`Computer wins! ${computer} beats ${player}`);
+
+    return `Computer wins! ${computer} beats ${player}`;
+  }
+  // Player wins
+  else {
+    playerWins++;
+    roundWinner = "Player";
+    setBackgroundColors(roundWinner);
+    setPlayerScore(playerWins);
+    setRoundResult(`Player wins! ${player} beats ${computer}`);
+    return `Player wins! ${player} beats ${computer}`;
+  }
+};
+
+// MAIN GAME EXECUTION
+//////////////////////
 
 const game = function (playerSelection) {
   if (gameRound < 4) {
-    console.log(playRound(computerPlay(), playerSelection));
+    playRound(computerPlay(), playerSelection);
   } else {
-    console.log(playRound(computerPlay(), playerSelection));
+    playRound(computerPlay(), playerSelection);
     setModalText();
-    modal.classList.toggle("hidden");
-    overlay.classList.toggle("hidden");
+    toggleModal();
   }
 };
