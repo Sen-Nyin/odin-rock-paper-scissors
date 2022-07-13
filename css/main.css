@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;800&display=swap");
 *:where(:not(html, iframe, canvas, img, svg, video):not(svg *, symbol *)) {
   all: unset;
   display: revert;
@@ -67,4 +68,186 @@ meter {
 
 :root {
   font-size: 62.5%;
+}
+
+:root {
+  --clr-orange: hsl(17, 83%, 54%);
+  --clr-lighter-orange: hsl(28, 83%, 61%);
+  --clr-darkest-grey: hsl(40, 4%, 14%);
+  --clr-dark-grey: hsl(34, 6%, 24%);
+  --clr-light-grey: hsl(38, 16%, 76%);
+  --clr-lighter-grey: hsl(46, 100%, 97%);
+  --fnt-default: "Merriweather Sans", sans-serif;
+  --fnt-size-default: 1.6rem;
+  --fnt-size-main-header: clamp(
+        2.5rem,
+        -1.0714285714rem + 9.5238095238vw,
+        3.5rem
+      );
+  --fnt-size-huge: clamp(
+        3rem,
+        -2.3571428571rem + 14.2857142857vw,
+        4.5rem
+      );
+  --fnt-weight-small: 400;
+  --fnt-weight-bold: 800;
+  --pd-container-default: 5% 12%;
+  --pd-container-footer: 2% 12%;
+}
+@media only screen and (max-width: 29.9875em) {
+  :root {
+    --pd-container-default: 2% 5%;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 100vh;
+}
+
+body {
+  font-family: var(--fnt-default);
+  font-size: var(--fnt-size-default);
+}
+
+.headings__main-header {
+  font-size: var(--fnt-size-main-header);
+}
+
+.header-container {
+  color: var(--clr-lighter-grey);
+  font-weight: var(--fnt-weight-bold);
+  text-align: center;
+  background-color: var(--clr-orange);
+  padding: var(--pd-container-default);
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.3);
+}
+
+.main-container {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  padding: var(--pd-container-default);
+}
+
+.footer-container {
+  background-color: var(--clr-dark-grey);
+  padding: var(--pd-container-footer);
+  text-align: center;
+  color: var(--clr-light-grey);
+  display: grid;
+  place-items: center;
+}
+
+.game {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "dash-top dash-top dash-top" "player buttons computer" "dash-bottom dash-bottom dash-bottom";
+  width: 100%;
+  border-radius: 2rem;
+  background-color: var(--clr-lighter-grey);
+  overflow: hidden;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.3);
+}
+@media only screen and (max-width: 74.9875em) {
+  .game {
+    grid-template-areas: "dash-top" "player" "buttons" "computer" "dash-bottom";
+    grid-template-columns: 1fr;
+  }
+}
+
+.contender {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  height: 100%;
+  width: 100%;
+}
+@media only screen and (max-width: 29.9875em) {
+  .contender {
+    padding: 1.5rem;
+  }
+}
+.contender-1 {
+  grid-area: player;
+}
+.contender-2 {
+  grid-area: computer;
+}
+.contender__name {
+  font-size: var(--fnt-size-huge);
+  margin-bottom: 2rem;
+}
+.contender__score {
+  font-size: var(--fnt-size-main-header);
+  font-weight: var(--fnt-weight-bold);
+}
+
+.current {
+  text-align: center;
+  border-radius: 1.5rem;
+  background-color: var(--clr-dark-grey);
+  color: var(--clr-light-grey);
+  padding: 2rem;
+  width: 60%;
+}
+
+.buttons {
+  grid-area: buttons;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-lighter-grey);
+  padding: 5rem;
+}
+@media only screen and (max-width: 29.9875em) {
+  .buttons {
+    padding: 1rem;
+  }
+}
+
+.btn {
+  background-color: var(--clr-orange);
+  display: block;
+  padding: 1rem;
+  color: white;
+  width: 60%;
+  text-align: center;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.3);
+}
+.btn:hover {
+  background-color: var(--clr-lighter-orange);
+}
+@media only screen and (max-width: 47.9875em) {
+  .btn {
+    width: 90%;
+  }
+}
+
+.mini-dashboard {
+  background-color: var(--clr-dark-grey);
+  width: 100%;
+  color: var(--clr-lighter-grey);
+  text-align: center;
+  padding: 2rem;
+}
+
+.dash-top {
+  grid-area: dash-top;
+}
+
+.dash-bottom {
+  grid-area: dash-bottom;
 }/*# sourceMappingURL=main.css.map */

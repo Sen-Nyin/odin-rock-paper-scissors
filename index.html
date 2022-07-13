@@ -5,41 +5,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
-    <link rel="stylesheet" href="main.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Rock Paper Scissors Game</title>
   </head>
-  <h1>The Odin Project - Rock, Paper, Scissors challenge</h1>
-  <p>
-    This challenge is part of The Odin Projects JavaScript foundations course
-  </p>
-
-  <p>
-    The Challenge is to create a console based game that takes a user input
-    (rock, paper, or scissors) and evaluates it against a randomly selected
-    option for the computer
-  </p>
-  <p>The winner should then be output.</p>
-  <p>The key requirements are:</p>
-
-  <ol>
-    <li>Start a new Git repo</li>
-    <li>Create this HTML document and link it to the js file</li>
-    <li>
-      Create a 'counterPlay' function that returns Rock, Paper, or Scissors
-      randomly
-    </li>
-    <li>
-      Create a function that plays a single round, taking in parameters, and
-      returing a string declaring the winner
-    </li>
-    <li>Results must be <strong>RETURNED</strong> and not console logged.</li>
-    <li>
-      Create a new function called game() that plays 5 rounds and announces the
-      overall winner.
-    </li>
-  </ol>
-
   <body>
+    <header class="header-container">
+      <h1 class="headings__main-header">Rock Paper Scissors</h1>
+    </header>
+
+    <main class="main-container">
+      <div class="game">
+        <section class="mini-dashboard dash-top">
+          <p class="round-number">Round 1</p>
+        </section>
+        <section class="contender contender-1">
+          <h2 class="contender__name">Player</h2>
+          <p class="contender__score player-score">0</p>
+        </section>
+        <section class="buttons">
+          <button class="btn" id="rock">Rock</button>
+          <button class="btn" id="paper">Paper</button>
+          <button class="btn" id="scissors">Scissors</button>
+        </section>
+        <section class="contender contender-2">
+          <h2 class="contender__name computer-score">Computer</h2>
+          <p class="contender__score">0</p>
+        </section>
+        <section class="mini-dashboard dash-bottom">
+          <p class="contender-choices">Rock beats Scissors, Player wins!</p>
+        </section>
+      </div>
+    </main>
+    <footer class="footer-container">
+      <p class="footer__text">
+        &copy; Leon Lonsdale 2022 - Built as part of The Odin Project
+      </p>
+    </footer>
     <script src="js/scripts.js"></script>
   </body>
 </html>

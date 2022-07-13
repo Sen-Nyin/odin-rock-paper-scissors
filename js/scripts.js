@@ -50,4 +50,4 @@ const game = function () {
   } to ${computerWins > playerWins ? playerWins : computerWins}`;
 };
 
-console.log(game());
+// console.log(game());

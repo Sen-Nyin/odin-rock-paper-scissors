@@ -1,0 +1,140 @@
+@use "base";
+@use "../abstracts" as a;
+
+.header-container {
+  color: var(--clr-lighter-grey);
+  font-weight: var(--fnt-weight-bold);
+  text-align: center;
+  background-color: var(--clr-orange);
+  padding: var(--pd-container-default);
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.3);
+}
+
+.main-container {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  padding: var(--pd-container-default);
+}
+
+.footer-container {
+  background-color: var(--clr-dark-grey);
+  padding: var(--pd-container-footer);
+  text-align: center;
+  color: var(--clr-light-grey);
+  @include a.center();
+}
+
+.game {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "dash-top dash-top dash-top"
+    "player buttons computer"
+    "dash-bottom dash-bottom dash-bottom";
+  width: 100%;
+  border-radius: 2rem;
+  background-color: var(--clr-lighter-grey);
+  overflow: hidden;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.3);
+
+  @include a.breakpoint(xl, max) {
+    grid-template-areas: "dash-top" "player" "buttons" "computer" "dash-bottom";
+    grid-template-columns: 1fr;
+  }
+}
+
+.contender {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  height: 100%;
+  width: 100%;
+
+  @include a.breakpoint(sm, max) {
+    padding: 1.5rem;
+  }
+
+  &-1 {
+    grid-area: player;
+  }
+  &-2 {
+    grid-area: computer;
+  }
+
+  &__name {
+    font-size: var(--fnt-size-huge);
+    margin-bottom: 2rem;
+  }
+
+  &__score {
+    font-size: var(--fnt-size-main-header);
+    font-weight: var(--fnt-weight-bold);
+    // margin-bottom: auto;
+  }
+}
+
+.current {
+  text-align: center;
+  border-radius: 1.5rem;
+  background-color: var(--clr-dark-grey);
+  color: var(--clr-light-grey);
+  padding: 2rem;
+  width: 60%;
+}
+
+.buttons {
+  grid-area: buttons;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-lighter-grey);
+  padding: 5rem;
+
+  @include a.breakpoint(sm, max) {
+    padding: 1rem;
+  }
+}
+
+.btn {
+  background-color: var(--clr-orange);
+  display: block;
+  padding: 1rem;
+  color: white;
+  width: 60%;
+  text-align: center;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: var(--clr-lighter-orange);
+  }
+
+  @include a.breakpoint(md, max) {
+    width: 90%;
+  }
+}
+
+.mini-dashboard {
+  background-color: var(--clr-dark-grey);
+  width: 100%;
+  color: var(--clr-lighter-grey);
+  text-align: center;
+  padding: 2rem;
+}
+
+.dash-top {
+  grid-area: dash-top;
+}
+.dash-bottom {
+  grid-area: dash-bottom;
+}

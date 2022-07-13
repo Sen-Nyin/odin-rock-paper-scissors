@@ -1,0 +1,40 @@
+@use "../abstracts" as a;
+
+:root {
+  // colors
+
+  --clr-orange: hsl(17, 83%, 54%);
+  --clr-lighter-orange: hsl(28, 83%, 61%);
+  --clr-darkest-grey: hsl(40, 4%, 14%);
+  --clr-dark-grey: hsl(34, 6%, 24%);
+  --clr-light-grey: hsl(38, 16%, 76%);
+  --clr-lighter-grey: hsl(46, 100%, 97%);
+
+  // fonts
+  --fnt-default: "Merriweather Sans", sans-serif;
+
+  --fnt-size-default: 1.6rem;
+  //   --fnt-size-main-header: 3.5rem;
+  --fnt-size-main-header: #{a.insertClamp(2.5, 3.5, xs, sm)};
+  //   --fnt-size-huge: 4.5rem;
+  --fnt-size-huge: #{a.insertClamp(3, 4.5, xs, sm)};
+
+  --fnt-weight-small: 400;
+  --fnt-weight-bold: 800;
+
+  // Padding
+
+  --pd-container-default: 5% 12%;
+  --pd-container-footer: 2% 12%;
+
+  @include a.breakpoint(sm, max) {
+    --pd-container-default: 2% 5%;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 100vh;
+}
