@@ -13,7 +13,8 @@
 .main-container {
   display: grid;
   place-items: center;
-  flex: 1;
+  //   flex: 1;
+  margin-block: auto;
   padding: var(--pd-container-default);
 }
 
@@ -137,4 +138,45 @@
 }
 .dash-bottom {
   grid-area: dash-bottom;
+}
+
+.modal {
+  position: absolute;
+  @include a.absCenter();
+  @include a.center();
+  background-color: var(--clr-lighter-grey);
+  border-radius: 1.5rem;
+  width: 40%;
+  height: 50%;
+  padding: 3rem;
+  z-index: 10;
+
+  &__winner-text {
+    font-size: var(--fnt-size-main-header);
+    font-weight: var(--fnt-weight-bold);
+  }
+
+  &__btn {
+    background-color: var(--clr-orange);
+    width: 80%;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    color: var(--clr-lighter-grey);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+.hidden {
+  display: none;
 }

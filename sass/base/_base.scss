@@ -9,6 +9,7 @@
   --clr-dark-grey: hsl(34, 6%, 24%);
   --clr-light-grey: hsl(38, 16%, 76%);
   --clr-lighter-grey: hsl(46, 100%, 97%);
+  --clr-green: hsl(134, 75%, 72%);
 
   // fonts
   --fnt-default: "Merriweather Sans", sans-serif;
@@ -37,4 +38,5 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   min-height: 100vh;
+  position: relative;
 }

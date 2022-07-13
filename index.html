@@ -16,7 +16,7 @@
     <main class="main-container">
       <div class="game">
         <section class="mini-dashboard dash-top">
-          <p class="round-number">Round 1</p>
+          <p class="round-number">Make your selection to start the game!</p>
         </section>
         <section class="contender contender-1">
           <h2 class="contender__name">Player</h2>
@@ -28,11 +28,11 @@
           <button class="btn" id="scissors">Scissors</button>
         </section>
         <section class="contender contender-2">
-          <h2 class="contender__name computer-score">Computer</h2>
-          <p class="contender__score">0</p>
+          <h2 class="contender__name">Computer</h2>
+          <p class="contender__score computer-score">0</p>
         </section>
         <section class="mini-dashboard dash-bottom">
-          <p class="contender-choices">Rock beats Scissors, Player wins!</p>
+          <p class="round-result">Awaiting Game Start</p>
         </section>
       </div>
     </main>
@@ -41,6 +41,12 @@
         &copy; Leon Lonsdale 2022 - Built as part of The Odin Project
       </p>
     </footer>
+    <div class="modal hidden">
+      <h2 class="modal__winner-text"></h2>
+      <p class="modal__score-text"></p>
+      <button class="modal__btn">Play again!</button>
+    </div>
+    <div class="overlay hidden"></div>
     <script src="js/scripts.js"></script>
   </body>
 </html>
