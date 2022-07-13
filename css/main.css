@@ -86,6 +86,7 @@ meter {
   --clr-light-grey: hsl(38, 16%, 76%);
   --clr-lighter-grey: hsl(46, 100%, 97%);
   --clr-green: hsl(134, 75%, 72%);
+  --clr-twitter: hsl(203, 89%, 53%);
   --fnt-default: "Merriweather Sans", sans-serif;
   --fnt-size-default: 1.6rem;
   --fnt-size-main-header: clamp(
@@ -124,6 +125,17 @@ body {
 
 .headings__main-header {
   font-size: var(--fnt-size-main-header);
+}
+
+.footer__text a:link,
+.footer__text a:visited {
+  text-decoration: none;
+  font-weight: var(--fnt-weight-bold);
+  color: var(--clr-twitter);
+}
+.footer__text a:link:hover,
+.footer__text a:visited:hover {
+  text-decoration: underline;
 }
 
 .header-container {

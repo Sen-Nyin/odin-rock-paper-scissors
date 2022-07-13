@@ -8,3 +8,14 @@ body {
 .headings__main-header {
   font-size: var(--fnt-size-main-header);
 }
+.footer__text {
+  & a:link,
+  a:visited {
+    text-decoration: none;
+    font-weight: var(--fnt-weight-bold);
+    color: var(--clr-twitter);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
