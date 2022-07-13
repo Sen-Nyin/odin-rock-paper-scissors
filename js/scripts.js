@@ -77,7 +77,7 @@ const setRoundResult = (result) => {
 };
 
 const setModalText = () => {
-  modalScore.textContent = `Player ${playerWins} vs ${computerWins} Computer`;
+  modalScore.textContent = `Player (${playerWins}) vs (${computerWins}) Computer`;
   if (computerWins === playerWins) {
     modalWinner.textContent = `It's a TIE!`;
   } else {
