@@ -119,7 +119,7 @@ const playRound = function (computer, player) {
   gameRound++;
   roundNumber.textContent = `Round Number ${gameRound}`;
   // invalid user entry
-  if (player !== "Rock" && player !== "Scissors" && player !== "Paper") {
+  if (!ALL_OPTIONS.indexOf(player)) {
     return `Player has made an invalid selection: ${player}`;
   }
   // TIE
