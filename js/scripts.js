@@ -24,7 +24,7 @@ const modalButton = document.querySelector(".modal__btn");
 const computerPlay = function () {
   return ALL_OPTIONS[Math.floor(Math.random() * 3)];
 };
-
+// Game Reset
 function reset() {
   toggleModal();
   setPlayerScore(0);
@@ -104,15 +104,15 @@ buttons.forEach((button) =>
 );
 
 modalButton.addEventListener("click", () => {
-  reset();
+  reset(); // Line 28
 });
 
 overlay.addEventListener("click", () => {
-  reset();
+  reset(); // Line 28
 });
 
 // PLAY ROUNDS - EXECUTED ON CLICK
-// SEE LINES 62 - 68
+// setBackgroundColors (L: 43) / setPlayerScore (L: 67) / setComputerScore (L: 71) / setRoundResult (L: 75)
 //////////////////////////////////
 
 const playRound = function (computer, player) {
@@ -155,6 +155,7 @@ const playRound = function (computer, player) {
 };
 
 // MAIN GAME EXECUTION
+// toggleModal (L: 90) / setModalText (L: 79)
 //////////////////////
 
 const game = function (playerSelection) {
