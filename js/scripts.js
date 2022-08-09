@@ -118,8 +118,11 @@ overlay.addEventListener("click", () => {
 const playRound = function (computer, player) {
   gameRound++;
   roundNumber.textContent = `Round Number ${gameRound}`;
+  console.log(computer, player);
   // invalid user entry
-  if (!ALL_OPTIONS.indexOf(player)) {
+  if (!ALL_OPTIONS.find((item) => item === player)) {
+    console.log(ALL_OPTIONS, player);
+    console.log("Invalid");
     return `Player has made an invalid selection: ${player}`;
   }
   // TIE
